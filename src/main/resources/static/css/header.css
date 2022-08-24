@@ -1,0 +1,65 @@
+a{
+        text-decoration: none; /*글자에 밑줄 없애기*/
+    }
+    .bar {
+        height:67px;
+        background:black;
+    }
+.header_logo {
+        position:relative;
+        width:132px;
+    }
+    .nav_wrap {
+        position:relative;
+        width:60%;
+        height:67px;
+        margin:0 auto; 
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .header_nav{
+        width:320px;
+
+    }
+    .nav_container{
+        width:100%;
+        list-style: none;
+        display:flex;
+        justify-content: space-between;
+    }
+    .nav_container>li{
+        font-size:14px;
+    }
+    .nav_container a{    /*a는 그냥 띄워쓰기 하면 된다.*/  
+       
+        color:white;
+        font-weight:bold;
+
+    }
+    .nav_container a:hover{
+    
+        color:red;
+    }
+    .header_sub {
+        font-size:7px;
+        width:110px;
+        list-style:none;
+        font-weight:lighter;
+        display:flex; /*세로로된거 가로로해주는거*/
+        justify-content: space-between;
+    }
+    .header_sub a{
+        color:gainsboro;
+        width:100%;
+    }
+    .header_sub li:nth-child(2) ::after {  /*바 만들어주는건데 2번쨰 오른쪽에 쓰겠다는 뜻*/
+        content:"ㅣ";
+        color:gainsboro;
+    } 
+    .header_sub li:nth-child(3) a{
+        color:white;
+    }
+    .header_sub a:hover {
+        color:white;
+    }

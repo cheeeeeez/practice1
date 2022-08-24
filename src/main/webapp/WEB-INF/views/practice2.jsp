@@ -15,8 +15,6 @@
             <input type="password" placeholder="Password" id="password" class="account">
             <button id="login" class="account">login</button>
             <p id="alert" class="account"> </p>
-            <p>practice</p>
-            <p>branch</p>
         </div>
     </div>   
     <script src="script.js"></script>

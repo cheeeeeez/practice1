@@ -11,7 +11,15 @@ public class HomeController {
     public ModelAndView start()throws Exception{
         ModelAndView mv = new ModelAndView();
 
-        mv.setViewName("practice2");
+        mv.setViewName("index");
+
+        return mv;
+    }
+	@GetMapping("/bootstrap")
+    public ModelAndView bootstrap()throws Exception{ 
+        ModelAndView mv = new ModelAndView();
+
+        mv.setViewName("bootstrap");
 
         return mv;
     }
