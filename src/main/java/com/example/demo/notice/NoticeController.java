@@ -20,7 +20,7 @@ public class NoticeController {
 	public ModelAndView getList() throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<NoticeVO> notice = NoticeService.getList(); 
-		if(notice.get(0)==null)
+		if(notice.get(0) == null)
 			System.out.println("null이구나");
 		else
 			System.out.println("잘있네");
