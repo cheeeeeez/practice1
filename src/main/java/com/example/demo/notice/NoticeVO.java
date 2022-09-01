@@ -11,4 +11,6 @@ public class NoticeVO {
 	private String content;
 	private int hit;
 	private Date regDate;
+	
 }
+

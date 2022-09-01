@@ -14,6 +14,7 @@
         <typeAlias type="java.util.Map" alias="Map"/>
         <typeAlias type="com.example.demo.s1.dbtestVO" alias="dbtestVO"/>
         <typeAlias type="com.example.demo.notice.NoticeVO" alias="NoticeVO"/>
+  
 
 
     </typeAliases>

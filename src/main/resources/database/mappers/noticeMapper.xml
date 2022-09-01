@@ -8,5 +8,15 @@
     <!-- 여기에 쿼리문 넣어서 나중에 가져가면 됨 -->
     <select id="getList" resultType="NoticeVO">
         SELECT * FROM NOTICE
+        WHERE NUM > 0
+        ORDER BY NUM ASC LIMIT #{startRow}, #{perPage}    
     </select>
+     <select id="getTotalCount" resultType="Long">
+        SELECT COUNT(NUM) FROM NOTICE         
+    </select>
+    
+    
+    
+    
+    
 </mapper>
