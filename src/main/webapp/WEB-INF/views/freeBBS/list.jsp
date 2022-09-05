@@ -15,7 +15,7 @@
 <style>
   div { position:relative;}
   .container{width:1000px;}
-  .table {left:0; right:0; margin-left:auto; margin-right:auto; } /* 가로 중앙 정렬 */
+  .table {left:0; right:0; margin-left:auto; margin-right:auto; } 
   .nav {justify-content : center; left:0; right:0; margin-left:auto; margin-right:auto;}
   .button {justify-content:right;}
 </style>
@@ -25,14 +25,14 @@
 <table style="width:1000px" class="table">
   <thead>
    <tr>
-   <th class="col-3">NO</th> <!-- 너비에 맞게 제대로 잘 나오게 하는 col-3  -->
+   <th class="col-3">NO</th> 
    <th class="col-3">SUBJECT</th>
    <th class="col-3">DATE</th>
    <th class="col-3">HIT</th>
    </tr>
   </thead>
   <tbody>
-  <c:forEach items="${noticeDB}" var="VO">  <!-- forEach 안에는 EL문을 써줘야한다. el문은 달러 중괄호-->
+  <c:forEach items="${freeBBSDB}" var="VO">  <!-- controller랑 이름 맞춰줘야 한다. -->
 	 <tr>
 	  <td class="col-3">${VO.num}</td>
 	  <td class="col-3"><a href="./detail?num=${VO.num}">${VO.title}</a></td>	  
@@ -71,29 +71,3 @@
 <a href="./add" type="button">글쓰기</a>
 </span>
 </nav>
-
-<%-- <div>
-	<span class="col-2"></span>
-	<span class="col-8">
-	<ul>
-		<c:if test="${pager.pre}">
-			<li><a href="./list?pn=${pager.startNum-1}">prev</a></li>
-		</c:if>
-		
-		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-		
-			<li>
-				<a href="./list?pn=${i}">${i}</a>
-			</li>
-		</c:forEach>
-		
-		<c:if test="${pager.next}">
-		<li><a href="./list?pn=${pager.lastNum+1}">next</a></li>		
-	</c:if>
-	</ul>
-	</span>
-</div> --%>
-</div>
-</body>
-
-</html>

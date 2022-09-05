@@ -7,14 +7,15 @@
 <configuration>
     <typeAliases>
         <typeAlias type = "java.util.List" alias="List"/>
-        <typeAlias type = "java.lang.Long" alias="Long"/>
+        <typeAlias type = "java.lang.Long" alias="Long"/> <!-- int를 제외하면 mapper.xml에서 타입을 받아줘야한다 (resultType으로)-->
         <typeAlias type = "java.lang.Double" alias="Double"/>
         <typeAlias type = "java.lang.Integer" alias="Integer"/>
         <typeAlias type = "java.lang.String" alias="String"/>
         <typeAlias type="java.util.Map" alias="Map"/>
         <typeAlias type="com.example.demo.s1.dbtestVO" alias="dbtestVO"/>
         <typeAlias type="com.example.demo.notice.NoticeVO" alias="NoticeVO"/>
-  
+        <typeAlias type="com.example.demo.freeBBS.freeBBSVO" alias="freeBBSVO"/>
+
 
 
     </typeAliases>

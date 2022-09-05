@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+    <mapper namespace="com.example.demo.freeBBS.freeBBSMapper">
+    
+    <select id="getList" resultType="freeBBSVO">
+        SELECT * FROM FREEBBS
+        WHERE NUM > 0
+        ORDER BY NUM ASC LIMIT #{startRow}, #{perPage}    
+    </select>
+     <select id="getTotalCount" resultType="Long">
+        SELECT COUNT(NUM) FROM FREEBBS         
+    </select>
+    <insert id="setAdd" parameterType="freeBBSVO" useGeneratedKeys="true" keyProperty="num"> 
+        INSERT INTO FREEBBS (NUM,TITLE,CONTENT,REGDATE,HIT) 
+        VALUES (#{num},#{title},#{content},now(),0)
+    </insert>
+    <select id="getDetail" parameterType="freeBBSVO" resultType="freeBBSVO"> 
+    	SELECT * FROM FREEBBS WHERE NUM= #{num} 
+    </select>
+    <select id="getUpdate" parameterType="freeBBSVO" resultType="freeBBSVO">
+    	SELECT title, content,num FROM FREEBBS WHERE NUM= #{num}
+    </select>
+    <update id="setUpdate" parameterType="freeBBSVO"> 
+        UPDATE FREEBBS SET TITLE=#{title}, CONTENT=#{content} WHERE NUM= #{num} 
+    </update>
+    <delete id="getDelete" parameterType="freeBBSVO">
+    	DELETE FROM FREEBBS WHERE NUM= #{num}
+    </delete>
+    
+</mapper>

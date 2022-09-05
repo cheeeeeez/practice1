@@ -14,9 +14,28 @@
      <select id="getTotalCount" resultType="Long">
         SELECT COUNT(NUM) FROM NOTICE         
     </select>
-    
-    
-    
-    
+    <insert id="setAdd" parameterType="NoticeVO" useGeneratedKeys="true" keyProperty="num"> <!--useGeneratedKeys="true" keyProperty="num" :1씩 값이 올라가게끔 자동생성시켜주는 것  -->
+        INSERT INTO NOTICE (NUM,TITLE,CONTENT,REGDATE,HIT) 
+        VALUES (#{num},#{title},#{content},now(),0) <!-- now는 현재시간, 0은 현재 조회수 -->
+    </insert>
+    <select id="getDetail" parameterType="NoticeVO" resultType="NoticeVO">  <!-- 어떤 파라미터 타입 값을 받아올지를 알아야하기 때문에 필요하다. -->
+    	SELECT * FROM NOTICE WHERE NUM= #{num} 
+    </select>
+    <select id="getUpdate" parameterType="NoticeVO" resultType="NoticeVO">
+    	SELECT title, content,num FROM NOTICE WHERE NUM= #{num}
+    </select>
+    <update id="setUpdate" parameterType="NoticeVO"> 
+        UPDATE NOTICE SET TITLE=#{title}, CONTENT=#{content} WHERE NUM= #{num} 
+    </update>
+    <delete id="getDelete" parameterType="NoticeVO">
+    	DELETE FROM NOTICE WHERE NUM= #{num}
+    </delete>
+    <select id="getGtl" parameterType="NoticeVO" resultType="integer">
+    	SELECT a.rownum 
+		FROM (
+		SELECT ROW_NUMBER() OVER(ORDER BY NUM ASC) AS ROWNUM, NUM 
+		FROM NOTICE
+		) a WHERE NUM= #{num};
+    </select>
     
 </mapper>

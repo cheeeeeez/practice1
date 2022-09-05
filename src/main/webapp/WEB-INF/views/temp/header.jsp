@@ -13,7 +13,7 @@
                     <li><a href="#">company</a></li>
                     <li><a href="#">artists</a></li>
                     <li><a href="/notice/list">pr center</a></li>
-                    <li><a href="#">audition</a></li>
+                    <li><a href="/freeBBS/list">audition</a></li>
                 </ul>
             </div>
             <div class="header_sub">
