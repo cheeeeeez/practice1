@@ -62,9 +62,15 @@ $(function(){
         
         <tr>
           <td colspan="4" class="text-left" valign="top" height=200>
-            ${VO.content}
+            ${VO.content} 
+          </td>
+          <td>
+          <c:if test="${VO.noticeFilesVO.fileName !=null}">  <!-- 조건문을 걸어서 이미지가 없더라도 이미지 없다고 창이 안뜬다. -->
+          <img src="../resources/upload/notice/${VO.noticeFilesVO.fileName}"> <!-- webinf view가 없어져서 1번만 뒤로가면 된다. -->
+          </c:if>
           </td>
         </tr>
+        
         <tr>
           <td colspan="4" class="text-right">
             <a href="./update?num=${VO.num}" class="btn btn-sm btn-success">수정</a>

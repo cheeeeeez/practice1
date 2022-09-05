@@ -11,6 +11,6 @@ public class NoticeVO {
 	private String content;
 	private int hit;
 	private Date regDate;
-	
+	private NoticeFilesVO noticeFilesVO; // join한걸 속성처럼 받아준다.
 }
 

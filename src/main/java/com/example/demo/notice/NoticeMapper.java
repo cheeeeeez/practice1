@@ -19,4 +19,5 @@ public interface NoticeMapper {
     public int getDelete(NoticeVO noticeVO) throws Exception;
     public NoticeVO getDetail(NoticeVO noticeVO) throws Exception;
     public int getGtl(NoticeVO noticeVO) throws Exception;
+    public int setFileAdd(NoticeFilesVO noticeFilesVO) throws Exception;
 }

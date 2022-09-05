@@ -18,12 +18,40 @@
         INSERT INTO NOTICE (NUM,TITLE,CONTENT,REGDATE,HIT) 
         VALUES (#{num},#{title},#{content},now(),0) <!-- now는 현재시간, 0은 현재 조회수 -->
     </insert>
-    <select id="getDetail" parameterType="NoticeVO" resultType="NoticeVO">  <!-- 어떤 파라미터 타입 값을 받아올지를 알아야하기 때문에 필요하다. -->
-    	SELECT * FROM NOTICE WHERE NUM= #{num} 
+    <select id="getDetail" parameterType="NoticeVO"  resultMap="noticeDetailResult" >   <!-- 26라인(id가 같은 곳)으로 가라! -->
+    	SELECT * FROM NOTICE A
+		LEFT JOIN NOTICEFILE B
+		ON A.NUM = B.NOTICENUM WHERE NUM= #{num}
     </select>
-    <select id="getUpdate" parameterType="NoticeVO" resultType="NoticeVO">
-    	SELECT title, content,num FROM NOTICE WHERE NUM= #{num}
+    <resultMap type="noticeVO" id="noticeDetailResult">  <!-- 파일이 섞여있음을 알려준다. -->
+            <id column="num" property="num"/>  <!-- primary 키는 아이디로, 나머지는 result로! -->
+            <result column="title" property="title"/>
+            <result column="content" property="content"/>
+            <result column="regDate" property="regDate"/>
+            <result column="hit" property="hit" />
+            <association property="noticeFilesVO" javaType="NoticeFilesVO"> <!-- association=1:1일때 사용 collection  1:n일때 (사진 여러장 들고올 때) -->
+                <id column="fileNum" property="fileNum"/>
+                <result column="fileName" property="fileName"/>
+                <result column="oriName" property="oriName" />
+            </association>
+        </resultMap>
+    <select id="getUpdate" parameterType="NoticeVO" resultMap="noticeUpdateResult">
+    	SELECT * FROM NOTICE A
+		LEFT JOIN NOTICEFILE B
+		ON A.NUM = B.NOTICENUM WHERE NUM= #{num}
     </select>
+    <resultMap type="noticeVO" id="noticeUpdateResult">  <!-- 파일이 섞여있음을 알려준다. id 중복안되게 해줘야 한다. -->
+            <id column="num" property="num"/>  <!-- primary 키는 아이디로, 나머지는 result로! -->
+            <result column="title" property="title"/>
+            <result column="content" property="content"/>
+            <result column="regDate" property="regDate"/>
+            <result column="hit" property="hit" />
+            <association property="noticeFilesVO" javaType="NoticeFilesVO"> <!-- association=1:1일때 사용 collection  1:n일때 (사진 여러장 들고올 때) -->
+                <id column="fileNum" property="fileNum"/>
+                <result column="fileName" property="fileName"/>
+                <result column="oriName" property="oriName" />
+            </association>
+        </resultMap>
     <update id="setUpdate" parameterType="NoticeVO"> 
         UPDATE NOTICE SET TITLE=#{title}, CONTENT=#{content} WHERE NUM= #{num} 
     </update>
@@ -37,5 +65,11 @@
 		FROM NOTICE
 		) a WHERE NUM= #{num};
     </select>
+    
+    <insert id = "setFileAdd" parameterType="NoticeFilesVO">
+    	INSERT INTO NOTICEFILE (FILENUM, NOTICENUM, FILENAME, ORINAME)
+    	VALUES(NULL, #{noticeNum}, #{fileName}, #{oriName}) <!-- auto increment 넣어놔서 null값 해놓으면 알아서 올라감 -->
+    
+    </insert>
     
 </mapper>

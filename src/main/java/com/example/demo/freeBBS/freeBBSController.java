@@ -62,5 +62,5 @@ public class freeBBSController {
 		System.out.println();
 		return "redirect:./list";  //새로고침 역할
 	}
-	
+		
 }
