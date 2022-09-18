@@ -17,17 +17,57 @@
         INSERT INTO FREEBBS (NUM,TITLE,CONTENT,REGDATE,HIT) 
         VALUES (#{num},#{title},#{content},now(),0)
     </insert>
-    <select id="getDetail" parameterType="freeBBSVO" resultType="freeBBSVO"> 
-    	SELECT * FROM FREEBBS WHERE NUM= #{num} 
+    <select id="getDetail" parameterType="freeBBSVO" resultMap="freeBBSDetailResult"> 
+    	SELECT * FROM FREEBBS A
+		LEFT JOIN FREEBBSFILE B
+		ON A.NUM = B.FREEBBSNUM WHERE NUM= #{num}
     </select>
-    <select id="getUpdate" parameterType="freeBBSVO" resultType="freeBBSVO">
-    	SELECT title, content,num FROM FREEBBS WHERE NUM= #{num}
+    <resultMap type="freeBBSVO" id="freeBBSDetailResult">  
+            <id column="num" property="num"/>  
+            <result column="title" property="title"/>
+            <result column="content" property="content"/>
+            <result column="regDate" property="regDate"/>
+            <result column="hit" property="hit" />
+            <association property="freeBBSFilesVO" javaType="freeBBSFilesVO"> 
+                <id column="fileNum" property="fileNum"/>
+                <result column="fileName" property="fileName"/>
+                <result column="oriName" property="oriName" />
+            </association>
+        </resultMap>
+    <select id="getUpdate" parameterType="freeBBSVO" resultMap="freeBBSUpdateResult">
+    	SELECT * FROM FREEBBS A
+		LEFT JOIN FREEBBSFILE B
+		ON A.NUM = B.FREEBBSNUM WHERE NUM= #{num}
     </select>
+    <resultMap type="freeBBSVO" id="freeBBSUpdateResult">  
+            <id column="num" property="num"/>  
+            <result column="title" property="title"/>
+            <result column="content" property="content"/>
+            <result column="regDate" property="regDate"/>
+            <result column="hit" property="hit" />
+            <association property="freeBBSFilesVO" javaType="freeBBSFilesVO"> 
+                <id column="fileNum" property="fileNum"/>
+                <result column="fileName" property="fileName"/>
+                <result column="oriName" property="oriName" />
+            </association>
+        </resultMap>
     <update id="setUpdate" parameterType="freeBBSVO"> 
         UPDATE FREEBBS SET TITLE=#{title}, CONTENT=#{content} WHERE NUM= #{num} 
     </update>
+     <select id="getGtl" parameterType="NoticeVO" resultType="integer">
+    	SELECT a.rownum 
+		FROM (
+		SELECT ROW_NUMBER() OVER(ORDER BY NUM ASC) AS ROWNUM, NUM 
+		FROM FREEBBS
+		) a WHERE NUM= #{num};
+    </select>
     <delete id="getDelete" parameterType="freeBBSVO">
     	DELETE FROM FREEBBS WHERE NUM= #{num}
     </delete>
+     <insert id = "setFileAdd" parameterType="freeBBSFilesVO">
+    	INSERT INTO FREEBBSFILE (FILENUM, FREEBBSNUM, FILENAME, ORINAME)
+    	VALUES(NULL, #{freeBBSNum}, #{fileName}, #{oriName})
+    
+    </insert>
     
 </mapper>

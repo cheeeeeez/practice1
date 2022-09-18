@@ -22,7 +22,7 @@ h1 {
   <div class="container">
     <div class="row">
      <h1>글쓰기</h1>
-     <form method=post action="./add" enctype="multipart/form-data">
+     <form method=post action="./add">
      <table class="table">
        
        <tr>

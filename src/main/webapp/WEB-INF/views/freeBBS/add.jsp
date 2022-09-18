@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,10 +35,19 @@ h1 {
        <tr>
         <th class="text-right danger" width=15%>내용</th>
         <td width=85%>
-          <textarea rows="8" cols="55" name=content></textarea>
+          <textarea rows="8" cols="55" name=content id="contents"></textarea>
         </td>
        </tr>
-       
+       <tr>
+               <td colspan="2" class="text-foot">
+                <div class="row mb-4">
+                    <label for="files" class="col-sm-2 col-form-label">File</label>
+                    <div class="col-sm-10">
+                        <input type="file" name="file" class="form-control" id="files">
+                    </div>
+                </div>
+            </td>
+           </tr>
        <tr>
         <td colspan="2" class="text-center">
           <input type=submit value="작성">
@@ -48,5 +58,6 @@ h1 {
      </form>
     </div>
   </div>
+  <c:import url="../temp/summerNote_script.jsp"></c:import>
 </body>
 </html>

@@ -16,6 +16,9 @@
         <typeAlias type="com.example.demo.notice.NoticeVO" alias="NoticeVO"/>
         <typeAlias type="com.example.demo.freeBBS.freeBBSVO" alias="freeBBSVO"/>
         <typeAlias type="com.example.demo.notice.NoticeFilesVO" alias="NoticeFilesVO"/>
+        <typeAlias type="com.example.demo.freeBBS.freeBBSFilesVO" alias="freeBBSFilesVO"/>
+        
+        
 
 
 

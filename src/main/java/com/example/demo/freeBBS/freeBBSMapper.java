@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+
 import com.example.demo.util.Pager;
 
 @Mapper
@@ -16,5 +17,7 @@ public interface freeBBSMapper {
     public freeBBSVO getUpdate(freeBBSVO freeBBSVO) throws Exception;
     public int setUpdate(freeBBSVO freeBBSVO) throws Exception;
     public int getDelete(freeBBSVO freeBBSVO) throws Exception;
+    public int getGtl(freeBBSVO freeBBSVO) throws Exception;
     public freeBBSVO getDetail(freeBBSVO freeBBSVO) throws Exception;
+    public int setFileAdd(freeBBSFilesVO freeBBSFilesVO) throws Exception;
 }

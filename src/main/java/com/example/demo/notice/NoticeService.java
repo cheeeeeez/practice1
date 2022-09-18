@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.notice.NoticeFilesVO;
 import com.example.demo.util.Pager;
 import com.example.demo.util.fileManager;
-import com.example.demo.notice.NoticeVO;
-import com.example.demo.s1.dbtestVO;
+
 
 @Service
 @Transactional(rollbackFor = Exception.class)

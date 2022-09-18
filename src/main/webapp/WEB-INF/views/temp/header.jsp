@@ -18,7 +18,7 @@
             </div>
             <div class="header_sub">
                 <li><a href="#">join</a></li>
-                <li><a href="#">login</a></li>
+                <li><a href="/signup">login</a></li>
                 <li><a href="#">ko</a></li>
                 <li><a href="#">jbl</a></li>
                 <li><a href="#">jg</a></li>

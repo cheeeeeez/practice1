@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.util.Pager;
 
 
@@ -34,6 +35,9 @@ public class freeBBSController {
 	public ModelAndView getDetail(freeBBSVO freeBBSVO) throws Exception{		
 		ModelAndView modelview = new ModelAndView();
 		freeBBSVO freeBBS = freeBBSService.getDetail(freeBBSVO); //VO타입, service에서 디테일을 받아온다. 
+		
+		
+		
 		modelview.addObject("VO", freeBBS);
 		modelview.setViewName("freeBBS/detail");
 		return modelview;
@@ -51,16 +55,34 @@ public class freeBBSController {
 		int result = freeBBSService.getDelete(freeBBSVO); 
 		return "redirect:./list";  //새로고침 역할
 	}
+	@GetMapping("gtl")
+	public String getGtl(freeBBSVO freeBBSVO) throws Exception {	
+		ModelAndView mv = new ModelAndView();
+		int result = freeBBSService.getGtl(freeBBSVO);
+		return "redirect:./list?pn=" + result;
+	}
 	@PostMapping("add")  //주소창에 파라미터가 노출되지 않는다.
-	public String setAdd(freeBBSVO freeBBSVO) throws Exception{
-		int result = freeBBSService.setAdd(freeBBSVO);
-		return "redirect:./list";  //새로고침 역할
+	public ModelAndView setAdd(freeBBSVO freeBBSVO, MultipartFile file) throws Exception{  //사진을 받아오기 위해 multipartfile 추가로 사용
+		ModelAndView mv = new ModelAndView(); // 사진 객체를 담아오기 위해 MV 사용
+		int result = freeBBSService.setAdd(freeBBSVO, file); //위의 메소드 중 뒤의 2개를 서비스에 넘겨준다.
+		System.out.println(result+"개 데이터 저장");
+		mv.setViewName("redirect:./list");
+		return mv;  //새로고침 역할
 	}
 	@PostMapping("update")
 	public String setUpdate(freeBBSVO freeBBSVO) throws Exception{
 		int result = freeBBSService.setUpdate(freeBBSVO);
 		System.out.println();
 		return "redirect:./list";  //새로고침 역할
+	}
+	
+	@PostMapping("fileDelete")
+	public ModelAndView setfileDelete(freeBBSFilesVO freeBBSFilesVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = 1;  //만약 사진이 삭제됐다면 html 창에서 f12로 확인할 시 1이 출력됨.
+		mv.addObject("result", result);
+		mv.setViewName("common/result");
+		return mv;
 	}
 		
 }

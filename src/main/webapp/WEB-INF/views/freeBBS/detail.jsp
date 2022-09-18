@@ -64,12 +64,18 @@ $(function(){
           <td colspan="4" class="text-left" valign="top" height=200>
             ${VO.content}
           </td>
+          <td>
+          <c:if test="${VO.freeBBSFilesVO.fileName !=null}">  
+          <img src="../resources/upload/freeBBS/${VO.freeBBSFilesVO.fileName}"> <!-- 뒤로가기를 할때, 3번을 해야되는데 웹 상에서 작동시 webinf와 view가 없어지기 때문에 한번만 뒤로가면 된다. -->
+          </c:if>
+          </td>
+        </tr>
         </tr>
         <tr>
           <td colspan="4" class="text-right">
             <a href="./update?num=${VO.num}" class="btn btn-sm btn-success">수정</a> <!-- 여기에 경로설정을 확실하게 해줘야 된다. -->
             <a href="./delete?num=${VO.num}" class="btn btn-sm btn-info">삭제</a>
-            <a href="list.do" class="btn btn-sm btn-warning">목록</a>
+            <a href="./gtl?num=${VO.num}" class="btn btn-sm btn-warning">목록</a>
           </td>
         </tr>
       </table>

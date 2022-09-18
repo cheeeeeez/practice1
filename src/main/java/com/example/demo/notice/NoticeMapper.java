@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.demo.s1.dbtestVO;
+
 import com.example.demo.util.Pager;
 
 @Mapper

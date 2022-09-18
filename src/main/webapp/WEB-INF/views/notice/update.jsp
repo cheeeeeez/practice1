@@ -44,12 +44,16 @@ h1 {
        <tr>
                <td colspan="2" class="text-foot">
                 <div class="row mb-4">
+                <div>
                     <label for="files" class="col-sm-2 col-form-label">File</label>
-                    <div class="col-sm-10">
+                  
+               </div>                
+                    <div class="col-sm-10">                   
                         <%-- <img src="../resources/upload/notice/${VO.noticeFilesVO.fileName}"> 
                         얘는 이미지를 띄우는 것--%>
                         <input value="${VO.noticeFilesVO.oriName }">
-                        <input type="file" name="file" class="form-control" id="files">
+                        <button type="button" class="btn btn-danger" id="fileDelete" data-num="${VO.noticeFilesVO.fileNum}" data-name="${VO.noticeFilesVO.fileName}">삭제</button>
+                        <input type="file" name="file" class="form-control" id="files">                                              
                     </div>
                 </div>
             </td>
@@ -66,5 +70,6 @@ h1 {
     </div>
   </div>
   <c:import url="../temp/summerNote_script.jsp"></c:import>
+  <script src="../resources/js/notice_update.js"></script>
 </body>
 </html>

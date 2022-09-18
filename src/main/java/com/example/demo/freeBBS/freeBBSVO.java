@@ -2,6 +2,7 @@ package com.example.demo.freeBBS;
 
 import java.sql.Date;
 
+
 import lombok.Data;
 
 @Data
@@ -11,6 +12,6 @@ public class freeBBSVO {
 	private String content;
 	private int hit;
 	private Date regDate;
-	
+	private freeBBSFilesVO freeBBSFilesVO;
 }
 
